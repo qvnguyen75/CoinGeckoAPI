@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"        
+             x:Class="CoinGeckoAPI.Views.MainView"           
+             Title="All coins">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar Placeholder="Search items..."
+                       x:Name="searchBar"
+                        SearchCommand="{Binding SearchCommand}"                   
+                       CancelButtonColor="Orange"
+                        TextChanged="{Binding TextChanged}"                    
+                       SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+            <CollectionView x:Name="ItemsListView"
+                        SelectedItem="{Binding SelectedItem}"
+                        SelectionMode="Single"
+                        ItemsSource="{Binding Coins}">
+                        
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="250"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding Image}"></Image>
+                            <Label Grid.Column="1" Text="{Binding Name}"                                 
+                                   FontSize="16" 
+                                   BackgroundColor="Green"
+                                   VerticalTextAlignment="Center"></Label>
+                            <Label Grid.Column="2" Text="{Binding Current_price}"
+                               VerticalTextAlignment="Center"></Label>
+                            <BoxView Grid.ColumnSpan="3" BackgroundColor="Black" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"></BoxView>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
