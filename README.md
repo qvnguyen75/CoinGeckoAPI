@@ -1,6 +1,6 @@
 # CoinGeckoAPI
 
-Get all information from the top 100 crypto
+Get all information from the top 100 crypto projects
 
 - Learned Xamarin with MVVM design pattern
 - Learned how to retrieve data from a rest api and display in a collectionview
